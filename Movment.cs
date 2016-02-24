@@ -1,3 +1,8 @@
+/* As you may be able to gleem this is a script for the Unity Engine to make a character model move around
+ * I'm actualy rather proud of this one, even if its pretty basic i got it working in a way that
+ * I was quite happy with. Even the jump for the most part is pretty good,
+ * I went through a few different ways of attempting to acomplish it in a way I approved of.
+*/
 ﻿using UnityEngine;
 using System.Collections;
 
