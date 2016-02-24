@@ -1,3 +1,8 @@
+/* This is very much the exact same as the Decrypter, except that all the input and output are reversed, so you put in 
+ * normal English and are given back an encrypted sequence of letters or numbers. I have all the same 
+ * problems with this as i do with the Decrypter as far as its effeciency and checking for things that would kill it
+ * but I don't really have the time for it. Maybe one day, for now its just proof that I do stuff outside of class.
+*/
 import java.util.*;
 
 public class Encrypter
