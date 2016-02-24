@@ -1,3 +1,5 @@
+(*This was a fun chalange, since its a functional language i solved it completely with recursion, but
+  at the cost of the speed which is pretty slow*)
 let odd x =
 	3 * x +1;;
 
