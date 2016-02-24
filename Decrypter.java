@@ -1,3 +1,9 @@
+/* This is mainly here because it was something i worked on very early in my codeing career to make doing
+ * this kind of thing quickly and eaily. Its defenitly still pretty ruff and I can see plenty of places where it could be
+ * vastly improved in terms of speed, ease of use, harding, and abstraction.
+ * Another thing about this is that the format is very spcific and can break it easily.
+ * long before I knew of RegExp, and since it was only for my self i didn't worry about try catch structures.
+*/
 import java.util.*;
 
 public class Decrypter
@@ -9,7 +15,7 @@ public class Decrypter
       
       option = displayMenu(kb);
       
-      while (option != 7)
+      while (option != 7) //my menu
       {
          switch (option)
          {
@@ -60,7 +66,8 @@ public class Decrypter
          
          return decrypt;
    }
-   
+   //Atbash is basicly just reversing the alphabet, so A becomes Z and Z becomes A
+   //could of also writen it using the % operation
    public static String Atbash(String crypt)
    {
       String encrypt = "";
@@ -76,6 +83,8 @@ public class Decrypter
       return encrypt;
    }
    
+   //This one is pretty self explitory, A is a 1 and Z is a 26, the formating is pretty weird
+   //to keep everything seprate you have - marks between the numbers and spaces between words (which i replace with -0-)
    public static String A1Z26(String crypt)
    {
       crypt = crypt.replace(" ", "-0-");
@@ -98,7 +107,7 @@ public class Decrypter
       return decrypt;
    
    }
-   
+   //As you may guess, this is a combnation of 3 different ciphers to form one.
    public static String Combined(String crypt)
    {
       crypt = A1Z26(crypt);
@@ -106,11 +115,12 @@ public class Decrypter
       return Caesar(crypt);
    }
    
+   //This one is a much less intuitive, this one requires a key and a phrase to be translated
+   //and the letters in the key determin the shift that the phrase undergoes
+   //A is a shift of 0 B is a shift of 1 and so on
    public static void Vigenere(Scanner kb)
    {
-      System.out.println("Enter pharase to be decrypted");
-      String crypt = kb.nextLine();
-      crypt = crypt.toLowerCase();
+      crypt = phrase(kb);
       String decrypt = "";
       boolean good = false;
       while(!(good))
@@ -119,7 +129,7 @@ public class Decrypter
          String key = kb.nextLine();
          key = key.toLowerCase();
          int h = 0;
-         for(int i = 0; i < crypt.length(); i++)
+         for(int i = 0; i < crypt.length(); i++)//this could use work
          {
             if(!(h < key.length()))
                h = 0;
@@ -134,7 +144,7 @@ public class Decrypter
                   num = 26 + num;
             }
             decrypt = decrypt + toChar(num);
-         }
+         }//I would probably do this loop differently now
          
          System.out.println(decrypt);
          System.out.println("Finished? (y/n)");
@@ -147,9 +157,7 @@ public class Decrypter
    
    public static void AdvCaesar(Scanner kb)
    {
-      System.out.println("Enter pharase to be decrypted");
-      String crypt = kb.nextLine();
-      crypt = crypt.toLowerCase();
+      crypt = phrase(kb);
       String decrypt = "";
       boolean good = false;
       while(!(good))
@@ -177,7 +185,7 @@ public class Decrypter
       }
    }
    
-   public static int toNum(char c)
+   public static int toNum(char c) //I very much hate this huge if, if else block
    {
        if(c == 'a')
           return 1;
@@ -235,7 +243,7 @@ public class Decrypter
           return 0;
    }
    
-   public static char toChar(int i)
+   public static char toChar(int i) //This is a cut and paste of above, but in reverse
    {
           i = i % 27;
 	       if(i == 1)
@@ -293,7 +301,7 @@ public class Decrypter
 	       else
 	          return ' ';
    }
-   
+   //My simple menu
    private static int displayMenu(Scanner kb)
    {
       int myOption = 0;
